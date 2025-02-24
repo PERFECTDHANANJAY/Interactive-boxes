@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Boxes</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            gap: 20px;
+            background-color: #f4f4f4;
+        }
+        .box {
+            width: 150px;
+            height: 100px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .expanded {
+            width: 250px;
+            height: 200px;
+        }
+        .options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 100%;
+        }
+        .expanded .options {
+            display: block;
+        }
+        button {
+            margin: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" onclick="toggleBox(this)">
+        Box 1
+        <div class="options">
+            <button onclick="changeColor(event, this.parentNode.parentNode, 'red')">Red</button>
+            <button onclick="changeColor(event, this.parentNode.parentNode, 'green')">Green</button>
+            <button onclick="changeSize(event, this.parentNode.parentNode, 'small')">Small</button>
+            <button onclick="changeSize(event, this.parentNode.parentNode, 'large')">Large</button>
+        </div>
+    </div>
+    <div class="box" onclick="toggleBox(this)">
+        Box 2
+        <div class="options">
+            <button onclick="changeColor(event, this.parentNode.parentNode, 'blue')">Blue</button>
+            <button onclick="changeColor(event, this.parentNode.parentNode, 'yellow')">Yellow</button>
+            <button onclick="changeSize(event, this.parentNode.parentNode, 'small')">Small</button>
+            <button onclick="changeSize(event, this.parentNode.parentNode, 'large')">Large</button>
+        </div>
+    </div>
+    <div class="box" onclick="toggleBox(this)">
+        Box 3
+        <div class="options">
+            <button onclick="changeColor(event, this.parentNode.parentNode, 'purple')">Purple</button>
+            <button onclick="changeColor(event, this.parentNode.parentNode, 'orange')">Orange</button>
+            <button onclick="changeSize(event, this.parentNode.parentNode, 'small')">Small</button>
+            <button onclick="changeSize(event, this.parentNode.parentNode, 'large')">Large</button>
+        </div>
+    </div>
+    
+    <script>
+        function toggleBox(box) {
+            box.classList.toggle("expanded");
+        }
+        
+        function changeColor(event, box, color) {
+            event.stopPropagation();
+            box.style.backgroundColor = color;
+        }
+        
+        function changeSize(event, box, size) {
+            event.stopPropagation();
+            if (size === 'small') {
+                box.style.width = '150px';
+                box.style.height = '100px';
+            } else {
+                box.style.width = '300px';
+                box.style.height = '250px';
+            }
+        }
+    </script>
+</body>
+</html>
