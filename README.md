@@ -20,4 +20,4 @@ Technologies Used -
 
 * JavaScript (Vanilla) for interactivity
 
-         PLEASE REFER Code File
+         PLEASE Refer Code File
